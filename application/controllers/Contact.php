@@ -43,7 +43,7 @@ class Contact extends CI_Controller {
                 'msg_datetime' => date("Y-m-d H:i:s")
             );
             if ($this->WebsiteMessageManager->saveMessage($messageInfo)) {
-                $this->mailsender->sendMail("odc.markham@gmail.com","Odcmarkham Team",$this->input->post('email'),"Thanks For Contacting Us",$this->mailservices->getBodyForUserOnContactFormSubmission($this->input->post('name')));
+                $this->mailsender->sendMail("info@odcmarkham.com","Odcmarkham Team",$this->input->post('email'),"Thanks For Contacting Us",$this->mailservices->getBodyForUserOnContactFormSubmission($this->input->post('name')));
                 $this->smssender->sendSMS($this->input->post('mobile'),$this->smsservices->getSMSBodyForUserOnMessageSubmission($this->input->post('name')));
                 $this->session->set_flashdata('successMessage', 'Your Message Has Been Sent Successfully.');
                 redirect(current_url());
